@@ -1,0 +1,55 @@
+{
+  "name": "link-checker",
+  "version": "1.0.0",
+  "description": "Fast, dependency-light Markdown link checker for repositories: verifies local file links and external HTTP(S) URLs.",
+  "keywords": [
+    "markdown",
+    "link-checker",
+    "broken-links",
+    "cli",
+    "docs"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "bin": {
+    "link-checker": "dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "dev": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "dependencies": {
+    "cli-table3": "^0.6.5",
+    "mdast-util-from-markdown": "^2.0.2",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^22.10.2",
+    "@vitest/coverage-v8": "^2.1.8",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
